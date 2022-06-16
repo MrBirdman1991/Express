@@ -5,8 +5,9 @@ import logger from "./utils/logger";
 import routes from "./routes";
 
 const app = express();
-
 const port = config.get<number>("port");
+
+app.use(express.json());
 
 routes(app);
 

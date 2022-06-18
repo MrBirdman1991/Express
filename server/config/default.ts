@@ -3,7 +3,7 @@ export default {
   dbUri:
     "mongodb+srv://schwobsi:4forGlesa@cluster0.zxwti.mongodb.net/express-tutorial?retryWrites=true&w=majority",
   saltWorkFactor: 10,
-  accessTokenTtl: "10m",
+  accessTokenTtl: "15m",
   refreshTokenTtl: "1y",
   publicKey: `-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdeqeDziSdPmkioVuN4wHNK9Xv

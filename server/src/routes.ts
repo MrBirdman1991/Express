@@ -6,6 +6,7 @@ import { createUserHandler } from "./controller/user.controller";
 import validateResource from "./middleware/validateResource";
 import {
   createUserSessionHandler,
+  deleteSessionHandler,
   getUserSessions,
 } from "./controller/session.controller";
 import requireUser from "./middleware/requireUser";
@@ -24,6 +25,8 @@ function routes(app: Express) {
   );
 
   app.get("/api/sessions", requireUser, getUserSessions);
+
+  app.delete("/api/sessions", requireUser, deleteSessionHandler);
 }
 
 export default routes;

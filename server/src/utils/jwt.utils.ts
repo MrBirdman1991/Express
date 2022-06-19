@@ -8,7 +8,7 @@ export function signJwt(
   payload: Object,
   options?: jwt.SignOptions | undefined
 ) {
-  return jwt.sign({ ...payload }, config.get("privateKey"), {
+  return jwt.sign({ ...payload }, privateKey, {
     ...options,
     algorithm: "RS256",
   });

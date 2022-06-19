@@ -1,11 +1,10 @@
-import { ProductDocument } from "./../models/session.model";
+import ProductModel, { ProductDocument } from "../models/product.model";
 import {
   DocumentDefinition,
   FilterQuery,
   QueryOptions,
   UpdateQuery,
 } from "mongoose";
-import ProductModel from "../models/session.model";
 
 export async function createProduct(
   input: DocumentDefinition<Omit<ProductDocument, "createdAt" | "updatedAt">>

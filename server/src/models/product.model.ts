@@ -13,6 +13,7 @@ export interface ProductInput {
 export interface ProductDocument extends ProductInput, Document {
   createdAt: Date;
   updatedAt: Date;
+  productId: string;
 }
 
 const productSchema = new Schema(

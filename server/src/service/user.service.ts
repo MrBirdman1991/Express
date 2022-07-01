@@ -5,7 +5,7 @@ import { omit } from "lodash";
 export async function createUser(input: UserInput) {
   try {
     const user = await UserModel.create(input);
-    return omit(user.toJSON(), "password");
+    return user;
   } catch (err: any) {
     throw new Error(err);
   }

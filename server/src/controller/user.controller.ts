@@ -9,8 +9,8 @@ export async function createUserHandler(
   res: Response
 ) {
   try {
-    const existingUser = await findUser({ email: req.body.email });
-    if (existingUser) return res.sendStatus(422);
+   //const existingUser = await findUser({ email: req.body.email });
+   //if (existingUser) return res.sendStatus(422);
 
     const user = await createUser(req.body);
     return res.status(201).json(user);

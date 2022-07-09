@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { object, string, TypeOf } from "zod";
-import axios from "axios";
+import axios from "../../utils/axios.instance";
+import { AxiosError } from "axios";
+import {useRouter} from "next/router"
 
 type CreateUserInput = TypeOf<typeof createUserSchema>;
 
@@ -24,6 +27,9 @@ const createUserSchema = object({
 });
 
 function RegisterPage() {
+  const [registerError, setRegisterError] = useState<string | null>(null);
+  const router = useRouter();
+
   const {
     register,
     formState: { errors },
@@ -32,14 +38,21 @@ function RegisterPage() {
     resolver: zodResolver(createUserSchema),
   });
 
+  
+
   async function onSubmitHandler(values: CreateUserInput) {
-    console.log(values);
+    try {
+      const {data} = await axios.post("/users", values);
+      router.push("/");
+    } catch (err) {
+      const error = err as AxiosError;
+      setRegisterError(error.message);
+    }
   }
 
-  console.log({ errors });
   return (
     <>
-      <p></p>
+      <p>{registerError}</p>
       <form onSubmit={handleSubmit(onSubmitHandler)} noValidate>
         <div className="form-element">
           <label htmlFor="email">Email</label>
